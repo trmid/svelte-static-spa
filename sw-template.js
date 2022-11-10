@@ -26,7 +26,7 @@ self.addEventListener("activate", event => {
 	);
 });
 
-// Get data on screen as quickly as possible, then updates once the network has returned the latest data. 
+// Get data on screen as quickly as possible, then update once the network has returned the latest data. 
 self.addEventListener("fetch", event => {
 	event.respondWith(
 		caches.open(cacheName).then(cache => 

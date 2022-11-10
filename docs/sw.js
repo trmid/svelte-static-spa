@@ -1,5 +1,5 @@
-const cacheName = `0.1.1`; // Change value to force update
-const filesToCache = `["./","build/bundle.js","build/bundle.css","build/bundle.js.map","favicon.png","icofont/fonts/icofont.woff","icofont/fonts/icofont.woff2","icofont/icofont.min.css","index.html"]`; // Generated filenames as string array
+const cacheName = `0.1.2`; // Change value to force update
+const filesToCache = `["./","build/bundle.js","build/bundle.css","favicon.png","icofont/fonts/icofont.woff","icofont/fonts/icofont.woff2","icofont/icofont.min.css","index.html"]`; // Generated filenames as string array
 
 self.addEventListener("install", event => {
 	// Kick out the old service worker
@@ -26,7 +26,7 @@ self.addEventListener("activate", event => {
 	);
 });
 
-// Get data on screen as quickly as possible, then updates once the network has returned the latest data. 
+// Get data on screen as quickly as possible, then update once the network has returned the latest data. 
 self.addEventListener("fetch", event => {
 	event.respondWith(
 		caches.open(cacheName).then(cache => 
