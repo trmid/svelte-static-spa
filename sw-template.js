@@ -2,16 +2,7 @@ const cacheName = `$PACKAGE_VERSION`; // Change value to force update
 const filesToCache = `$FILES_TO_CACHE`; // Generated filenames as string array
 
 self.addEventListener("install", event => {
-	// Kick out the old service worker
-	self.skipWaiting();
-	event.waitUntil(
-		caches.open(cacheName).then(cache => {
-			return cache.addAll(JSON.parse(filesToCache));
-		})
-	);
-});
 
-self.addEventListener("activate", event => {
 	// Delete any non-current cache
 	event.waitUntil(
 		caches.keys().then(keys => 
@@ -23,6 +14,14 @@ self.addEventListener("activate", event => {
 				})
 			)
 		)
+	);
+	
+	// Kick out the old service worker
+	self.skipWaiting();
+	event.waitUntil(
+		caches.open(cacheName).then(cache => {
+			return cache.addAll(JSON.parse(filesToCache));
+		})
 	);
 });
 
