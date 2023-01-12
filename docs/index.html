@@ -20,16 +20,20 @@
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", async () => {
         if ((location.pathname || "/").match(/\//)?.length == 1) {
-
-          // Register sw:
-          const sw = await navigator.serviceWorker.register("sw.js");
-          sw.addEventListener("updatefound", () => {
-            console.log("update found!");
-            const newWorker = sw.installing;
-            newWorker.addEventListener("statechange", () => {
-              if (newWorker.state === "activated") location.reload();
+          try {
+            // Register sw:
+            const sw = await navigator.serviceWorker.register("sw.js");
+            sw.addEventListener("updatefound", () => {
+              console.log("update found!");
+              const newWorker = sw.installing;
+              newWorker.addEventListener("statechange", () => {
+                if (newWorker.state === "activated") location.reload();
+              });
             });
-          });
+          } catch (err) {
+            console.warn("Failed to register service worker...");
+            console.error(err);
+          }
         }
       });
     }
