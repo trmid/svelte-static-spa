@@ -14,33 +14,12 @@
   <link rel="stylesheet" href="icofont/icofont.min.css">
 
   <script defer src="build/bundle.js"></script>
-
-  <!-- Initialize Service Worker -->
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", async () => {
-        if ((location.pathname || "/").match(/\//)?.length == 1) {
-          try {
-            // Register sw:
-            const sw = await navigator.serviceWorker.register("sw.js");
-            sw.addEventListener("updatefound", () => {
-              console.log("update found!");
-              const newWorker = sw.installing;
-              newWorker.addEventListener("statechange", () => {
-                if (newWorker.state === "activated") location.reload();
-              });
-            });
-          } catch (err) {
-            console.warn("Failed to register service worker...");
-            console.error(err);
-          }
-        }
-      });
-    }
-  </script>
 </head>
 
 <body>
+  <noscript>
+    Please enable JavaScript in your browser to use this app.
+  </noscript>
 </body>
 
 </html>
