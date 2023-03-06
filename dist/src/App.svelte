@@ -18,19 +18,3 @@
 
 <!-- Service Worker -->
 <ServiceWorker />
-
-<!-- Style -->
-<style>
-  :global(html, body) {
-    margin: 0;
-    padding: 0;
-    background-color: #222;
-    color: #eee;
-  }
-
-  main {
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 1rem;
-  }
-</style>

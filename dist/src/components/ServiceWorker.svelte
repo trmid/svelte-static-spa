@@ -129,7 +129,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #222;
+    background-color: var(--background-color);
+    color: var(--accent-color);
     z-index: 200;
   }
 

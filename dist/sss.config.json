@@ -1,0 +1,15 @@
+{
+  "cache": {
+    "files": {
+      "essential": [
+        "bundle/bundle.js",
+        "bundle/bundle.css"
+      ],
+      "ignore": [
+        "sw.js",
+        "build/bundle.js.map",
+        "CNAME"
+      ]
+    }
+  }
+}

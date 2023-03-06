@@ -1,0 +1,46 @@
+
+/* Global Vars */
+:root {
+  /* Vars here will be accessible anywhere in the app */
+}
+
+/* Light Color Scheme (Default) */
+:root {
+  --background-color: white;
+  --text-color: #222;
+  --accent-color: dodgerblue
+}
+
+/* Dark Color Scheme */
+@media(prefers-color-scheme: dark) {
+  :root {
+    --background-color: #222;
+    --text-color: #fff;
+    --accent-color: dodgerblue;
+  }
+}
+
+/* border box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* html, body */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* main */
+main {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Anchor Tags */
+a, a:visited {
+  color: var(--accent-color);
+}
