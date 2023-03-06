@@ -77,6 +77,7 @@ const main = async () => {
   const title = await input(`What is the title of your site? (My Site)`) || 'My Site';
   const description = await input(`What is your site description?`);
   const outDir = await input(`Where should your site be built? (docs)`) || 'docs';
+  console.log(title, description, outDir);
   let packageName = title.toLowerCase().replace(/\s/g, '-').replace(/^[0-9a-zA-Z-_]+/g, '');
   if(packageName.match(/$[0-9]+/)) packageName = "sss-" + packageName;
 
@@ -87,17 +88,21 @@ const main = async () => {
   copyRec(dist(), cwd,
     new Map([
       ["rollup.config.js", [
-        { regex: /\$OUT_DIR/, value: outDir },
-        { regex: /\$SITE_TITLE/, value: title },
-        { regex: /\$SITE_DESCRIPTION/, value: description }
+        { regex: /\$OUT_DIR/g, value: outDir },
+        { regex: /\$SITE_TITLE/g, value: title },
+        { regex: /\$SITE_DESCRIPTION/g, value: description }
       ]],
       ["package.json", [
-        { regex: /\$OUT_DIR/, value: outDir },
-        { regex: /\$PACKAGE_NAME/, value: packageName },
-        { regex: /\$SITE_DESCRIPTION/, value: description }
+        { regex: /\$OUT_DIR/g, value: outDir },
+        { regex: /\$PACKAGE_NAME/g, value: packageName },
+        { regex: /\$SITE_DESCRIPTION/g, value: description }
       ]],
-      [".gitignore", [{ regex: /\$OUT_DIR/, value: outDir }]],
-      ["README.md", [{ regex: /\$OUT_DIR/, value: outDir }]]
+      ["index.html", [
+        { regex: /\$SITE_TITLE/g, value: title },
+        { regex: /\$SITE_DESCRIPTION/g, value: description }
+      ]],
+      [".gitignore", [{ regex: /\$OUT_DIR/g, value: outDir }]],
+      ["README.md", [{ regex: /\$OUT_DIR/g, value: outDir }]]
     ]),
     [
       { regex: /DOT\-/, value: "." },
