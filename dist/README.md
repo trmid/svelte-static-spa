@@ -11,7 +11,7 @@ Run `npm run dev` to start the development server. Edit the svelte and typescrip
 
 ## Build
 
-When your app is production ready, run the following command to output the static site bundle to the `$OUT_DIR/build` directory:
+When your app is production ready, run the following command to output the static site bundle to the `$OUT_DIR/bundle` directory:
 
 ### Linux
 
