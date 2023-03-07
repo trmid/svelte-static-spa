@@ -5,4 +5,4 @@ A template repository for building a single page web app (SPA) with Svelte.
 
 ## Installation
 
-Run: `npm create-sss`
+Run: `npm init sss <install-directory>`

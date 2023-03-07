@@ -2,7 +2,7 @@
 
 <h2>Install</h2>
 <p>
-  After running <code>npm create-sss</code>, the project dependencies will need to be installed using: <code>npm i</code>.
+  After running <code>npm init sss &lt;install-directory&gt;</code>, the project dependencies will need to be installed using: <code>npm i</code>.
 </p>
 
 <h2>Develop</h2>
