@@ -3,14 +3,19 @@
 </script>
 
 <header>
+  <i class="icofont-ship-alt"></i>
   <a href="/" use:link>Home</a>
   <a href="/about" use:link>About</a>
 </header>
 
 <style>
   header {
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  header > i {
+    font-size: xx-large;
   }
 </style>
