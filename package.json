@@ -1,9 +1,12 @@
 {
   "name": "create-sss",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A template repository for creating a static, Single-page Web App (SPA) with Svelte.",
   "main": "bin.js",
   "type": "module",
+  "bin": {
+    "create-sss": "bin.js"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "node bin.js test"
