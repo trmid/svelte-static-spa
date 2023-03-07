@@ -50,7 +50,7 @@ const generateSW = () => ({
 		
 		// Build secondary file cache list:
 		const secondaryCache = new Set(
-      globSync(join(out, "**/*"), { ignore: SSS.cache.files.ignore })
+      globSync(join(out, "**/*"), { ignore: SSS.cache.files.ignore.map(x => join(out, x)), nodir: true })
       .map(filename => filename.replace(/\\/g, "/").slice(join(out).length + 1))
     );
 
