@@ -2,3 +2,4 @@
 /$OUT_DIR/bundle/bundle.js.map
 /.vscode/
 .DS_Store
+/test/

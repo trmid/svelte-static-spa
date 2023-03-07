@@ -6,7 +6,7 @@
   "type": "module",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node bin.js test"
   },
   "repository": {
     "type": "git",
