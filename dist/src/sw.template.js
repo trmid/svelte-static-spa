@@ -27,9 +27,11 @@ self.addEventListener("install", event => {
 		})
 	);
 
-  // Trigger non-essential file installation:
+  // Trigger async, non-essential file installation:
   caches.open(cacheName).then(cache => {
-    return cache.addAll(JSON.parse(secondaryFilesToCache))
+    return Promise.allSettled(
+      JSON.parse(secondaryFilesToCache).map(file => cache.add(file).catch(console.warn))
+    );
   }).catch(console.error);
 
 });
