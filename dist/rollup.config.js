@@ -43,15 +43,14 @@ function serve() {
 // Custom plugin to write service worker to out folder:
 const generateSW = () => ({
 	name: "Service Worker Generator",
-	buildEnd: () => {
+	writeBundle: () => {
 
     // Build essential file cache list:
-    const essentialCache = new Set(["./", "bundle/bundle.js", "bundle/bundle.css", ...SSS.cache.files.essential]);
+    const essentialCache = new Set(["./", ...globSync(SSS.cache.files.essential, { ignore: [...SSS.cache.files.ignore], nodir: true, cwd: join(process.cwd(), out) })]);
 		
 		// Build secondary file cache list:
 		const secondaryCache = new Set(
-      globSync(join(out, "**/*"), { ignore: SSS.cache.files.ignore.map(x => join(out, x)), nodir: true })
-      .map(filename => filename.replace(/\\/g, "/").slice(join(out).length + 1))
+      globSync("**/*", { ignore: [...SSS.cache.files.ignore, ...SSS.cache.files.essential], nodir: true, cwd: join(process.cwd(), out) })
     );
 
 		// Read sw-template:
