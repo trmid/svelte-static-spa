@@ -2,12 +2,11 @@
   "cache": {
     "files": {
       "essential": [
-        "bundle/bundle.js",
-        "bundle/bundle.css"
+        "bundle/*"
       ],
       "ignore": [
         "sw.js",
-        "build/bundle.js.map",
+        "bundle/bundle.js.map",
         "CNAME"
       ]
     }
