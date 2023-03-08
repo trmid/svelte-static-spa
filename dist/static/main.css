@@ -55,3 +55,8 @@ code {
   margin: 0 0.25rem;
   opacity: 0.8;
 }
+
+/* paragraphs */
+p {
+  line-height: 1.5;
+}
