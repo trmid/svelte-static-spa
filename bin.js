@@ -78,7 +78,7 @@ const main = async () => {
   const description = await input(`What is your site description?`);
   const outDir = await input(`Where should your site be built? (docs)`) || 'docs';
   console.log(title, description, outDir);
-  let packageName = title.toLowerCase().replace(/\s/g, '-').replace(/^[0-9a-zA-Z-_]+/g, '');
+  let packageName = title.toLowerCase().replace(/\s/g, '-').replace(/[^0-9a-zA-Z-_]+/g, '');
   if(packageName.match(/$[0-9]+/)) packageName = "sss-" + packageName;
 
   // Copy project files to installation directory:
