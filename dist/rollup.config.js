@@ -10,14 +10,15 @@ import json from '@rollup/plugin-json';
 import fs from 'fs';
 import { join } from 'path';
 import { globSync } from 'glob';
-import SSS from './sss.config.json';
-import nodePackage from "./package.json";
+import { spawn } from 'child_process';
+import SSS from './sss.config.json' assert {type: "json"};
+import nodePackage from "./package.json" assert {type: "json"};
 
 // Determine production or development:
 const production = !process.env.ROLLUP_WATCH;
 
 // Out directory:
-const out = "$OUT_DIR";
+const out = "docs";
 
 function serve() {
 	let server;
@@ -29,7 +30,7 @@ function serve() {
 	return {
 		writeBundle() {
 			if (server) return;
-			server = require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
+			server = spawn('npm', ['run', 'start', '--', '--dev'], {
 				stdio: ['ignore', 'inherit', 'inherit'],
 				shell: true
 			});
@@ -75,9 +76,9 @@ export default {
 	input: 'src/main.ts',
 	output: {
 		sourcemap: !production,
-		format: 'iife',
+		format: 'es',
 		name: 'app',
-		file: `${out}/bundle/bundle.js`
+		dir: `${out}/build/`
 	},
 	plugins: [
 		svelte({

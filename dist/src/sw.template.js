@@ -42,7 +42,9 @@ self.addEventListener("fetch", event => {
 		caches.open(cacheName).then(cache => 
 			cache.match(event.request).then(response => {
         const networkResponse = fetch(event.request).then(networkResponse => {
-					if(Math.floor(networkResponse.status / 100) == 2) cache.put(event.request, networkResponse.clone());
+					if(event.request.method === "GET" && Math.floor(networkResponse.status / 100) == 2) {
+						cache.put(event.request, networkResponse.clone());
+					}
 					return networkResponse;
 				}).catch(console.warn);
 				return response ?? networkResponse;
