@@ -41,6 +41,14 @@ function serve() {
 	};
 }
 
+// Custom plugin to delete build folder before re-write:
+const clearBuild = () => ({
+  name: "Clear Build",
+  buildStart: () => {
+    fs.rmSync(join(process.cwd(), out, "build"), { force: true, recursive: true });
+  }
+});
+
 // Custom plugin to write service worker to out folder:
 const generateSW = () => ({
 	name: "Service Worker Generator",
@@ -81,6 +89,7 @@ export default {
 		dir: `${out}/build/`
 	},
 	plugins: [
+		clearBuild(),
 		svelte({
 			preprocess: sveltePreprocess({ sourceMap: !production }),
 			compilerOptions: {
